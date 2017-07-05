@@ -21,6 +21,19 @@ class CreaturesController < ApplicationController
       # redirect_to creature_path is equivalent to redirect_to "/creatures"
     end
   end
+
+  def show
+    # get the creature id from the url params
+    creature_id = params[:id]
+
+    # use `creature_id` to find the creature in the database
+    # and save it to an instance variable
+    @creature = Creature.find_by_id(creature_id)
+
+    # render the show view (it has access to instance variable)
+    # remember the default behavior is to render :show
+    
+  end
 end
      
 
