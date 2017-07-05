@@ -49,6 +49,50 @@ class CreaturesController < ApplicationController
     @creature = Creature.find_by_id(creature_id)
     # render the edit view (it has access to instance variable)
   end
+
+  # update creature in the database
+  def update
+    # get the creature id from the url params
+    creature_id = params[:id]
+
+    # use the `creature_id` to find the creature in the database 
+    creature = Creature.find_by_id(creature_id)
+
+    # whitelist params and save to variable
+    creature_params = params.require(:creature).permit(:name, :description)
+
+    # update the creature based on params
+    creature.update_attributes(creature_params)
+
+    # redirect the show page for the updated creature
+    redirect_to creature_path(creature)
+    # redirect_to creature_path(creature) is equivalent to:
+    # redirect_to "/creatures/#{creature.id}"
+    
+  end
+  # delete a creature from a database
+  def destroy
+    # get the creature id from the url params
+    creature_id = params[:id]
+
+    # use `creature_id` to find the creature from the database and save it
+    creature = Creature.find_by_id(creature_id)
+
+    # destroy the creature
+    creature.destroy
+
+    # redirect to creature index
+    redirect_to creatures_path
+    # redirect_to creature_path is equivalent to:
+    # redirect_to "/creatures"
+  end
+
+  private
+
+  def creature_params
+    # whitelist params return whitelist version
+    params.require(:creature).permit(:name, :description)
+  end
 end
      
 
