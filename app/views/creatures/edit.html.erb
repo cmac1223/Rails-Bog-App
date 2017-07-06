@@ -2,4 +2,5 @@
   <%= f.text_field :name %>
   <%= f.text_area :description %>
   <%= f.submit "Save Creature" %>
+  <%= link_to "update", edit_creature_path(@creature) %>
 <% end %>

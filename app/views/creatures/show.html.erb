@@ -1,12 +1,12 @@
 <h3><%= @creature.name %></h3>
-<p><%= @creature.description%></p>
-<%= button_to "Delete", @creature, method: :delete %>
+
 
 <%= form_for @creature do |f| %>
   <%= f.text_field :name %><br />
 
   
   <%= f.text_field :description %><br />
-
-  <%= f.submit %>
+  <%= button_to "Delete", @creature, method: :delete %>
+  
 <% end %>
+  <%= link_to "index", creatures_path(@creature) %>

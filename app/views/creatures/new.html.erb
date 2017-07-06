@@ -1,5 +1,7 @@
-<%= form_for @creature do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_area :description %>
+<%= form_for :creature, url: "/creatures", method: "post" do |f| %>
+ Name: <%=  f.text_area :name %>
+ Description: <%= f.text_area :description %>
+ <%= link_to "index", creatures_path(@creature) %>
   <%= f.submit "Save Creature" %>
 <% end %>
+  

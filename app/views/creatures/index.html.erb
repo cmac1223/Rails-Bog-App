@@ -1,8 +1,19 @@
 <!-- app/views/creatures/index.html.erb -->
+  
+<ul class="collection">
+  <%  @creatures.each do |creature| %>
+    <li class="collection-item">
+      <strong>Name:</strong> <%= creature.name %> <br>
+      <strong>Description:</strong> <%= creature.description %>
+      <br>
+      <%= link_to "show", creature_path(creature) %>
+      <br>
+      <%= link_to "update", edit_creature_path(creature) %>
+    </li>
+  <% end %>
+    <%=link_to "new", new_creatures_path(@creatures)%>
+</ul>
+     
+          
 
-<% @creatures.each do |creature| %>
-  <p>
-    <strong>Name:</strong> <%= creature.name %><br>
-    <strong>Description:</strong> <%= creature.description %>
-  </p>
-<% end %>
+
